@@ -4,7 +4,8 @@ import Participant from "../models/Participant.js";
 export const getParticipants = async (req, res) => {
   try {
     const participants = await Participant.find();
-    res.status(200).json(participants);
+    const reversedParticipants = participants.reverse();
+    res.status(200).json(reversedParticipants);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch participants" });
   }
